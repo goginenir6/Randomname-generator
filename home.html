@@ -1,0 +1,143 @@
+{% extends "base.html" %} {% block content %}
+<form action="/submittoken" id="tokensub" method="POST">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <ul id="sortable">
+                <li class="ui-state-default" id="Ajay" onclick="destclick(this.id)">Ajay</li>
+                <li class="ui-state-default" id="Arbaaz" onclick="destclick(this.id)">Arbaaz</li>
+                <li class="ui-state-default" id="Dawood" onclick="destclick(this.id)">Dawood</li>
+                <li class="ui-state-default" id="Irfan" onclick="destclick(this.id)">Irfan</li>
+                <li class="ui-state-default" id="Mfarhan" onclick="destclick(this.id)">Mfarhan</li>
+                <li class="ui-state-default" id="Muneem" onclick="destclick(this.id)">Muneem</li>
+                <li class="ui-state-default" id="Sadique" onclick="destclick(this.id)">Sadique</li>
+                <li class="ui-state-default" id="Shoeb" onclick="destclick(this.id)">Shoeb</li>
+                <li class="ui-state-default" id="Sultan" onclick="destclick(this.id)">Sultan</li>
+                <li class="ui-state-default" id="Shahnawaz" onclick="destclick(this.id)">Shahnawaz</li>
+                <li class="ui-state-default" id="Shahul" onclick="destclick(this.id)">Shahul</li>
+                <li class="ui-state-default" id="Tameem" onclick="destclick(this.id)">Tameem</li>
+                <li class="ui-state-default" id="Dathu" onclick="destclick(this.id)">Dathu</li>
+                <li class="ui-state-default" id="Ravi" onclick="destclick(this.id)">Ravi</li>
+                <li class="ui-state-default" id="Krishna" onclick="destclick(this.id)">Krishna</li>
+                <li class="ui-state-default" id="Abdullah" onclick="destclick(this.id)">Abdullah</li>
+                <li class="ui-state-default" id="Gafoor" onclick="destclick(this.id)">Gafoor</li>
+                <li class="ui-state-default" id="Arp" onclick="destclick(this.id)">Arp</li>
+                <li class="ui-state-default" id="Farhan" onclick="destclick(this.id)">Farhan</li>
+                <li class="ui-state-default" id="Hussain" onclick="destclick(this.id)">Hussain</li>
+                <li class="ui-state-default" id="Talha" onclick="destclick(this.id)">Talha</li>
+                <li class="ui-state-default" id="Balu" onclick="destclick(this.id)">Balu</li>
+                <li class="ui-state-default" id="Ahsan" onclick="destclick(this.id)">Ahsan</li>
+                <li class="ui-state-default" id="Srinu" onclick="destclick(this.id)">Srinu</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-3">
+                <ul id="sortable">
+                    <li class="ui-state-default"><span id="deselem"></span></li>
+                </ul>
+            </div>
+            <div class="col-md-4"><span  onclick="resultnum()" class="btn btn-success">Select your partner</span>
+                </div>
+            
+            <div class="col-md-3">
+                <ul id="sortable">&nbsp;&nbsp;&nbsp;
+                    <li class="ui-state-default"><span id="result"></span></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <!--<div class="col-md-6">OK</div>-->
+                <!--<div class="col-md-6">-->
+                <span style="font-size: 20px;" onclick="resetnum()" class="btn btn-success">Ok</span>
+                <!--</div>-->
+            </div>
+            
+            </div><br>
+            <div class="row">
+                <table class="table table-striped" id="team_list">
+                <thead>
+                    <th><b>S.No</b></th>
+                    <th><b>Name</b></th>
+                    <th><b>partner Naame</b></th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+  
+</div>
+</form>
+<style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
+  #sortable li { margin: 3px 10px 3px 0px; padding: 1px; float: left; width: 100px; height: 40px; font-size: 20px;; text-align: center; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  } );
+  </script>
+<script>
+    var current1;
+    var lis= [];
+    $( document ).ready(function() {
+        debugger;
+        console.log( "ready!" );
+        lis= ["Ajay","Arbaaz","Dawood","Irfan","Mfarhan","Muneem","Sadique","Shoeb","Sultan","Shahnawaz","Shahul","Tameem","Dathu","Ravi","Krishna","Abdullah","Gafoor","Arp","Farhan","Hussain","Talha","Balu","Ahsan","Srinu"];
+        //for ( i=0; i<$('#selecter > option').length; i++){
+        //    lis.push(i);
+        //}
+        current1 =  lis[Math.floor(Math.random()*lis.length)];
+        document.getElementById('deselem').innerHTML = current1;
+       
+    });
+
+function destclick(id){
+    document.getElementById('deselem').innerHTML = id;
+}
+function resultnum(id){
+    debugger;
+    current2 =  lis[Math.floor(Math.random()*lis.length)];
+    if (current1 != current2){
+        document.getElementById('result').innerHTML = current2;
+        document.getElementById(current2).remove();
+        document.getElementById(current1).remove();
+        index = lis.indexOf(current1);
+        lis.splice(index, 1);
+        index = lis.indexOf(current2);
+        lis.splice(index, 1);
+        $("#team_list").append('<tr ><td></td>\
+                <td>'+current1+'</td> <td>'+current2+'</td></tr>');
+        addSerialNumber();
+    }
+    else{
+        resultnum(id)
+    }
+    
+}
+  var addSerialNumber = function () {
+    var i = 1
+    $('table tr').each(function(index) {
+        $(this).find('td:nth-child(1)').html(index);
+    });
+};
+
+function resetnum(){
+    current1 =  lis[Math.floor(Math.random()*lis.length)];
+    document.getElementById('deselem').innerHTML = current1;
+    document.getElementById('result').innerHTML = '';
+}
+
+</script>
+{% endblock %}
